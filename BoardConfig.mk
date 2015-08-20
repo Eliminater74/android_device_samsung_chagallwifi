@@ -25,6 +25,23 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storag
 # Kernel
 TARGET_KERNEL_CONFIG := deathly_chagallwifi_defconfig
 
+#TARGET_PREBUILT_RECOVERY := device/lge/d851/recovery.img
+
+# Kernel & ToolChains
+#TARGET_KERNEL_CONFIG := cyanogenmod_d851_defconfig
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-6.0
+#TARGET_KERNEL_CROSS_COMPILE_PREFIX := prebuilts/gcc/linux-x86/arm/arm-linux-gnueabi-4.9/bin/arm-eabi-
+# Rom ToolChains
+TARGET_ROM_CUSTOM_TOOLCHAIN := arm-linux-androideabi-4.9
+#TARGET_GCC_VERSION := 4.8
+#TARGET_TOOLS_PREFIX := prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.8/bin/arm-linux-androideabi-
+# RR Config Flags
+#TARGET_TC_ROM := SM-4.8
+#TARGET_TC_KERNEL := SM-4.9
+#TARGET_GCC_VERSION_EXP := $(TARGET_TC_ROM)
+#TARGET_KERNEL_CUSTOM_TOOLCHAIN := $(TARGET_TC_KERNEL)
+
+
 # Charging mode
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_SHOW_PERCENTAGE := true
@@ -43,6 +60,27 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 10485760
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2527068160
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 12637437952
 BOARD_FLASH_BLOCK_SIZE := 4096
+
+BOARD_SEPOLICY_UNION += \
+	file_contexts \
+	debuggerd.te \
+	device.te \
+	domain.te \
+	drmserver.te \
+	file.te \
+	gpsd.te \
+	init.te \
+	kernel.te \
+	mediaserver.te \
+	service_contexts \
+	servicemanager.te \
+	shell.te \
+	sysinit.te \
+	system_app.te \
+	system_server.te \
+	vold.te \
+	wpa.te
+
 
 # PowerHAL
 TARGET_POWERHAL_VARIANT := chagallwifi
